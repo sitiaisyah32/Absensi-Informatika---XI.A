@@ -1,72 +1,76 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="id">
 <head>
-  <title>Absensi Informatika - XI.A</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Absensi Informatika - XI.A</title>
   <style>
-    /*  */
     body {
-      background-color: rgb(179, 215, 230);
-    }
-    #form-container {
-      width: 500px;
-      margin: 0 auto;
-      background-color: white;
-      border: 2px solid rgb(20, 17, 17);
-      border-radius: 10px;
-      padding: 20px;
-     }
-    #form-container h2 {
+      font-family: Poppins, sans-serif;
+      background: #f0f4f8;
       text-align: center;
-      color:rgb(21, 21, 26);
+      padding: 40px;
     }
-    #form-container input[type="text"], #form-container input [type ="date"], #form-container input [type ="time"], #form-container input [type ="number"]
-    {
-      width: 100%;
+    h1 {
+      color: #2c3e50;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      width: 300px;
+      margin: 0 auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      width: 90%;
       padding: 10px;
-      margin-button: 20px;
-      border: 2px solid rgb(113, 82, 184);
-      border-radius: 5px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
     }
-    #form-container input[type= "submit"] {
-      background-color: blue;
+    button {
+      background: #27ae60;
       color: white;
       border: none;
-      border-radius: 5px;
-      padding: 10px;
       cursor: pointer;
     }
-    #form-container input[type="submit"]:hover{
-      background-color: blue;
-    }
-    #footer{
-      text-align: center;
-      margin-top: 30px;
-      font-size: 12px; 
-      color: white;
+    button:hover {
+      background: #219150;
     }
   </style>
 </head>
-      
 <body>
-  <div id="form-container">
-    <h2>Absensi Informatika XI.A </h2>
-    
-  <form action="https://script.google.com/macros/s/AKfycbxhW7NfPZt6iN1oJa2a-PcbW6DGQKgwvkhJo6ADsfNW6k8gr04uG4Ctz6HXIstZAyZfTA/exec" method="post">
-      <label for ="nama">nama lengkap</label>
-      <input type ="text" id =nama name ="nama" required>
-      <label for ="keterangan">keterangan</label>
-      <input type ="text" id =keterangan name ="keterangan" required>
-      <input type="submit" value="kirim">
+  <h1>📋 Absensi Informatika - XI.A</h1>
+  <p>Silakan isi form absensi di bawah ini:</p>
+
+  <form action="https://script.google.com/macros/s/AKfycbz9SWmkbuieHB26vF3b0JypgoxiwEcKpTT2vcVWQpmw8IyXxxLJgCIXhdV0yQLVqWzNQw/exec" method="post">
+  <form id="absenForm">
+    <input type="text" id="nama" placeholder="Nama Lengkap" required><br>
+    <select id="keterangan">
+      <option value="Hadir">Hadir</option>
+      <option value="Izin">Izin</option>
+      <option value="Sakit">Sakit</option>
+      <option value="Dispen">Dispen</option>
+    </select><br>
+    <button type="submit">Kirim Absen</button>
   </form>
-</div>
 
-<dif id ="footer">
-                                                                         BY AI.AN
-</dif>
+  <p id="hasil"></p>
 
+  <script>
+    document.getElementById("absenForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const nama = document.getElementById("nama").value;
+      const kelas = document.getElementById("kelas").value;
+      const ket = document.getElementById("keterangan").value;
+      const waktu = new Date().toLocaleString("id-ID");
+      
+      document.getElementById("hasil").innerHTML =
+        `✅ ${nama} (${kelas}) tercatat ${ket} pada ${waktu}`;
+      
+      // Di sini nanti bisa ditambah kode untuk simpan ke database / Google Sheet
+    });
+  </script>
 </body>
 </html>
-
-  
